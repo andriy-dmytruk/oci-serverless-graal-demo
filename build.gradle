@@ -51,11 +51,12 @@ tasks {
         defaultCommand.set("com.example.Function::handleRequest")
     }
     dockerBuild {
-        images = ["[REGION].ocir.io/[TENANCY]/[REPO]/$project.name:$project.version"]
+        images = ["ca-toronto-1.ocir.io/aaaaaaaaaaaa/demo/$project.name:$project.version"]
     }
 
     dockerBuildNative {
-        images = ["[REGION].ocir.io/[TENANCY]/[REPO]/$project.name-native:$project.version"]
+        // TODO change repo if actually want to push
+        images = ["ca-toronto-1.ocir.io/aaaaaaaaaaaa/demo/$project.name-native:$project.version"]
     }
 }
 graalvmNative.toolchainDetection = false
@@ -69,6 +70,7 @@ graalvmNative {
     }
 }
 micronaut {
+    runtime("oracle_function")
     testRuntime("junit5")
     processing {
         incremental(true)
